@@ -130,7 +130,9 @@ All GitHub data has already been fetched and aggregated for you before this step
 - `/tmp/gh-aw/agent/copilot-prs.json` — merged PRs authored by Copilot, each with `on_behalf_of`: the human who guided that work (`"unknown"` if no human assignee was found).
 
 ## Your task
-Using only the files above, write a concise quarterly contribution impact report and create exactly one GitHub issue in this repository.
+Using only the files above, write a concise quarterly contribution impact report and create exactly one GitHub issue in this repository by calling the `create_issue` safe-output tool with the full report as the issue body.
+
+Your chat response is NOT the deliverable and is discarded — the report only exists if you call `create_issue`. Do not print the report as plain text output; do not finish without having called `create_issue`.
 
 The contributors in `summary.json` are already ranked by merged-PR count. Treat that count as the base signal, but you may adjust the narrative ranking using PR titles in `merged-prs.json` where a contributor's work is clearly higher-impact. State your reasoning briefly.
 
@@ -143,7 +145,7 @@ The contributors in `summary.json` are already ranked by merged-PR count. Treat 
 - Suggested next steps or items needing maintainer attention for the next quarter.
 
 ## Constraints
-- Create exactly one issue.
+- Create exactly one issue, via the `create_issue` safe-output tool.
 - Do not fetch any additional data; rank and summarize only what is on disk.
 - Impact scoring is heuristic; flag anything that may warrant human review.
 - Keep it concise and skimmable.
